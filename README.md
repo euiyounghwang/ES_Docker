@@ -1,9 +1,9 @@
 # ES_Docker
-initiial ES_Docker
 
-*Create a Running Docker Container With Gunicorn and Flask**  
+# Create a Running Docker Container With Gunicorn and Flask
 
 
+**Create Flask**
 ```
 from flask import Flask
 app = Flask(__name__)
@@ -16,8 +16,39 @@ def index():
 
 ```
 
+**Next, let’s write the command that will run the Gunicorn server:**
+```
+#!/bin/sh
+gunicorn --chdir app main:app -w 2 --threads 2 -b 0.0.0.0:8000
+```
+
+The parameters are pretty much self-explanatory: We are telling Gunicorn that we want to spawn two worker processes running two threads each. We are also accepting connections from the outside and overriding Gunicorn’s default port (8000).
+
+**Our basic Dockerfile:**
+```
+FROM python:3.7.3-slim
+COPY requirements.txt /
+RUN pip3 install -r /requirements.txt
+COPY . /app
+WORKDIR /app
+ENTRYPOINT ["./gunicorn_starter.sh"]
+```
+
+**Let’s build our image:**
+```
+docker build -t flask/hello-world .
+```
+**And run:**
+```
+docker run -p 8003:8003 flask/hello-world
+```
+
+**And Test:**
+$ curl localhost:8003
+Hello world!
 
 
+**Git Interface:**
 
 ```sh
 echo "# a" >> README.md
