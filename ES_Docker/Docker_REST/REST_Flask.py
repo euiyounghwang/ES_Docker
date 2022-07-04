@@ -13,7 +13,7 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/index')
 def index():
-    print(Util.bcolors().BOLD + str(datetime.datetime.now()) + ' >> WebService Started..' + Util.bcolors().ENDC)
+    print(Util.bcolors().BOLD + str(datetime.datetime.now()) + ' >> WebServices Started..' + Util.bcolors().ENDC)
     return 'Hello world!'
 
 
