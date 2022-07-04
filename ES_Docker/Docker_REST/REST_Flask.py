@@ -13,6 +13,7 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/index')
 def index():
+    print(Util.bcolors().BOLD + str(datetime.datetime.now()) + ' >> WebService Started..' + Util.bcolors().ENDC)
     return 'Hello world!'
 
 
@@ -20,8 +21,6 @@ def index():
 if __name__ == '__main__':
 
     # /ES/Python_Install/bin/python3.5 /ES/ES_UnCopy_Detection/WebService/REST_API.py 7091 prd
-    print(Util.bcolors().BOLD + str(datetime.datetime.now()) + ' >> WebService Started..' +  Util.bcolors().ENDC)
-
     app.config['JSON_AS_ASCII'] = False
     app.secret_key = 'super secret key'
     # app.secret_key = 'st'
