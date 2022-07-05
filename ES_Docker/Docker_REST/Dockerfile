@@ -5,9 +5,11 @@
 FROM python:3.9.7
 COPY requirements.txt /
 RUN pip3 install -r /requirements.txt
-COPY . /app
+# COPY . /app
+COPY . /ES_Docker
 # COPY /Users/euiyoung.hwang/ES/Python_Workspace/ES_Docker/Docker_REST/ /app
-WORKDIR /app
+WORKDIR /ES_Docker
+# WORKDIR /app
 ENTRYPOINT ["./gunicorn_start.sh"]
 
 # dockerfile 지정
