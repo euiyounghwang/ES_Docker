@@ -1,6 +1,7 @@
 
 # https://betterprogramming.pub/create-a-running-docker-container-with-gunicorn-and-flask-dcd98fddb8e0
 # gunicorn REST_Flask:app -w 2 --threads 2 -b 0.0.0.0:8000
+# pigar export
 # pigar -p ./requirements.txt - P ./
 
 import datetime
