@@ -1,14 +1,16 @@
 
 # https://betterprogramming.pub/create-a-running-docker-container-with-gunicorn-and-flask-dcd98fddb8e0
 # gunicorn REST_Flask:app -w 2 --threads 2 -b 0.0.0.0:8000
+# pigar -p ./requirements.txt - P ./
 
 import datetime
 from flask import Flask
 import sys
 
-sys.path.append('/Users/euiyoung.hwang/ES/Python_Workspace/')
+# sys.path.append('/Users/euiyoung.hwang/ES/Python_Workspace/')
+# import ES_Docker.Docker_REST.lib.Utils.Util as Util
 
-import ES_Docker.Docker_REST.lib.Utils.Util as Util
+import lib.Utils.Util as Util
 
 app = Flask(__name__)
 
