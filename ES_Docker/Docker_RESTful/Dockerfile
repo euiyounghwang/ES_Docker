@@ -13,12 +13,14 @@
 
 # Dockerfile Build
 FROM python:3.9.7
+RUN python -m pip install --upgrade pip
 COPY requirements.txt /
+# RUN pip3 uninstall -r /requirements.txt -y
 RUN pip3 install -r /requirements.txt
 # COPY . /app
-COPY . /ES_Docker_RESTAPI
+COPY . /ES_Docker_RESTful
 # COPY /Users/euiyoung.hwang/ES/Python_Workspace/ES_Docker/Docker_REST/ /app
-WORKDIR /ES_Docker_RESTAPI
+WORKDIR /ES_Docker_RESTful
 # WORKDIR /app
 ENTRYPOINT ["./gunicorn_start.sh"]
 
@@ -26,7 +28,7 @@ ENTRYPOINT ["./gunicorn_start.sh"]
 # docker build -f /Users/euiyoung.hwang/ES/Python_Workspace/ES_Docker/Docker_RESTful/Dockerfile/Dockerfile -t flaskrest/swagger .
 # docker build -t flaskrest/swagger .
 
-# docker run --name flask_web -p 8003:8003 flaskrest/swagger
-# docker run --name flask_web -e PYTHONUNBUFFERED=1 -p 8003:8003 flask/hello-world
+# docker run --name flask_web_api -p 8003:8003 flaskrest/swagger
+# docker run --name flask_web_api -e PYTHONUNBUFFERED=1 -p 8004:8004 flaskrest/swagger
 
 # curl localhost:8003 -> Hello world!

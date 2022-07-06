@@ -1,0 +1,66 @@
+[INFO|REST_API_Flask.py:98] 2022-07-05 18:09:21,137 > 
+
+request.get_json() >> {'key': '0900', 'company_code': '30', 'loginId': 'pd292816'}
+[INFO|REST_API_Flask.py:101] 2022-07-05 18:09:21,138 > Predict::post In [key] -> 0900
+[INFO|REST_API_Flask.py:101] 2022-07-05 18:09:21,138 > Predict::post In [company_code] -> 30
+[INFO|REST_API_Flask.py:101] 2022-07-05 18:09:21,138 > Predict::post In [loginId] -> pd292816
+[INFO|REST_API_Flask.py:98] 2022-07-05 18:25:28,050 > 
+
+request.get_json() >> {'key': '0900', 'company_code': '30', 'loginId': 'pd292816'}
+[INFO|REST_API_Flask.py:101] 2022-07-05 18:25:28,050 > Predict::post In [key] -> 0900
+[INFO|REST_API_Flask.py:101] 2022-07-05 18:25:28,050 > Predict::post In [company_code] -> 30
+[INFO|REST_API_Flask.py:101] 2022-07-05 18:25:28,051 > Predict::post In [loginId] -> pd292816
+[INFO|REST_API_Flask.py:100] 2022-07-05 18:26:33,256 > 
+
+request.get_json() >> {'key': '0900', 'company_code': '30', 'loginId': 'pd292816'}
+[INFO|REST_API_Flask.py:103] 2022-07-05 18:26:33,256 > Predict::post In [key] -> 0900
+[INFO|REST_API_Flask.py:103] 2022-07-05 18:26:33,257 > Predict::post In [company_code] -> 30
+[INFO|REST_API_Flask.py:103] 2022-07-05 18:26:33,257 > Predict::post In [loginId] -> pd292816
+[INFO|REST_API_Flask.py:100] 2022-07-05 18:26:52,779 > 
+
+request.get_json() >> {'key': '0900', 'company_code': '30', 'loginId': 'pd292816'}
+[INFO|REST_API_Flask.py:103] 2022-07-05 18:26:52,780 > Predict::post In [key] -> 0900
+[INFO|REST_API_Flask.py:103] 2022-07-05 18:26:52,780 > Predict::post In [company_code] -> 30
+[INFO|REST_API_Flask.py:103] 2022-07-05 18:26:52,780 > Predict::post In [loginId] -> pd292816
+[INFO|REST_API_Flask.py:100] 2022-07-05 18:27:58,895 > 
+
+request.get_json() >> {'key': '0900', 'company_code': '30', 'loginId': 'pd292816'}
+[INFO|REST_API_Flask.py:103] 2022-07-05 18:27:58,895 > Predict::post In [key] -> 0900
+[INFO|REST_API_Flask.py:103] 2022-07-05 18:27:58,896 > Predict::post In [company_code] -> 30
+[INFO|REST_API_Flask.py:103] 2022-07-05 18:27:58,896 > Predict::post In [loginId] -> pd292816
+[INFO|REST_API_Flask.py:100] 2022-07-05 18:28:21,887 > 
+
+request.get_json() >> {'key': '0900', 'company_code': '30', 'loginId': 'pd292816'}
+[INFO|REST_API_Flask.py:103] 2022-07-05 18:28:21,887 > Predict::post In [key] -> 0900
+[INFO|REST_API_Flask.py:103] 2022-07-05 18:28:21,887 > Predict::post In [company_code] -> 30
+[INFO|REST_API_Flask.py:103] 2022-07-05 18:28:21,887 > Predict::post In [loginId] -> pd292816
+[INFO|REST_API_Flask.py:98] 2022-07-05 18:34:48,961 > 
+
+request.get_json() >> {'key': '0900', 'company_code': '30', 'loginId': 'pd292816'}
+[INFO|REST_API_Flask.py:101] 2022-07-05 18:34:48,961 > Predict::post In [key] -> 0900
+[INFO|REST_API_Flask.py:101] 2022-07-05 18:34:48,961 > Predict::post In [company_code] -> 30
+[INFO|REST_API_Flask.py:101] 2022-07-05 18:34:48,961 > Predict::post In [loginId] -> pd292816
+[INFO|REST_API_Flask.py:92] 2022-07-05 22:04:14,077 > 
+
+request.get_json() >> {'key': '0900', 'company_code': '30', 'loginId': 'pd292816'}
+[INFO|REST_API_Flask.py:95] 2022-07-05 22:04:14,078 > Predict::post In [key] -> 0900
+[INFO|REST_API_Flask.py:95] 2022-07-05 22:04:14,079 > Predict::post In [company_code] -> 30
+[INFO|REST_API_Flask.py:95] 2022-07-05 22:04:14,079 > Predict::post In [loginId] -> pd292816
+[INFO|REST_API_Flask.py:92] 2022-07-05 22:38:46,795 > 
+
+request.get_json() >> {'key': '0900', 'company_code': '30', 'loginId': 'pd292816'}
+[INFO|REST_API_Flask.py:95] 2022-07-05 22:38:46,796 > Predict::post In [key] -> 0900
+[INFO|REST_API_Flask.py:95] 2022-07-05 22:38:46,796 > Predict::post In [company_code] -> 30
+[INFO|REST_API_Flask.py:95] 2022-07-05 22:38:46,796 > Predict::post In [loginId] -> pd292816
+[INFO|REST_API_Flask.py:92] 2022-07-05 22:40:34,323 > 
+
+request.get_json() >> {'key': '0900', 'company_code': '30', 'loginId': 'pd292816'}
+[INFO|REST_API_Flask.py:95] 2022-07-05 22:40:34,325 > Predict::post In [key] -> 0900
+[INFO|REST_API_Flask.py:95] 2022-07-05 22:40:34,333 > Predict::post In [company_code] -> 30
+[INFO|REST_API_Flask.py:95] 2022-07-05 22:40:34,334 > Predict::post In [loginId] -> pd292816
+[INFO|REST_API_Flask.py:92] 2022-07-05 22:54:49,703 > 
+
+request.get_json() >> {'key': '0900', 'company_code': '30', 'loginId': 'pd292816'}
+[INFO|REST_API_Flask.py:95] 2022-07-05 22:54:49,703 > Predict::post In [key] -> 0900
+[INFO|REST_API_Flask.py:95] 2022-07-05 22:54:49,704 > Predict::post In [company_code] -> 30
+[INFO|REST_API_Flask.py:95] 2022-07-05 22:54:49,704 > Predict::post In [loginId] -> pd292816

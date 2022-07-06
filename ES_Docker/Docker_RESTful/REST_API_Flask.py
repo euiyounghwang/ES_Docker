@@ -6,7 +6,7 @@
 # pip install -U flask-apispec
 
 # pigar export
-# pigar -p ./requirements.txt -P ./
+# pigar -p ./requirements.txt -P ./ -y
 
 import datetime
 from flask import Flask, Response, request, redirect, url_for, session, abort, render_template, logging, session, redirect, jsonify
@@ -15,14 +15,8 @@ from flask_restplus import Resource, Api, reqparse, fields
 import jinja2
 import copy
 
-from flask import render_template, make_response
-
-from apispec import APISpec
-from apispec.ext.marshmallow import MarshmallowPlugin
-from flask_apispec.extension import FlaskApiSpec
-
-import sys
-
+# import sys
+#
 # sys.path.append('/Users/euiyoung.hwang/ES/Python_Workspace/')
 
 import lib.Utils.Util as Utils
@@ -44,6 +38,7 @@ api = Api(app=app, version="1.0", default='Swagger-UI', title="Swagger-UI Manger
 model = api.model(
     'Swagger-UI Model',
     {
+        'key': fields.String(required=True, example="0900", description="KEY", help="KEY"),
         'company_code': fields.String(required=True, example="30", description="company_code of the model", help="회사코드"),
         'loginId': fields.String(required=True, example="pd292816", description="loginId of the Model", help="로그인ID")
      }
@@ -87,11 +82,14 @@ class ModelLoading_Detect_Docuemt_Text_Interface(Resource):
             parser = reqparse.RequestParser()
 
             # 쿼리 ID : 예) UUID 외
-            # parser.add_argument('key', required=True, type=str, help='string: unId')
+            # 쿼리 ID : 예) UUID 외
+            parser.add_argument('key', required=True, type=str, help='string: unId')
+            parser.add_argument('company_code', required=True, type=str, help='string: unId')
+            parser.add_argument('loginId', required=True, type=str, help='string: unId')
 
             args = parser.parse_args()
 
-            print('\n\nrequest.get_json()' + str(request.get_json()))
+            log.info('\n\nrequest.get_json() >> ' + str(request.get_json()))
 
             for key, value in args.items():
                 log.info('Predict::post In [' + key + '] -> ' + str(value))
@@ -117,11 +115,17 @@ class ModelLoading_Detect_Docuemt_Text_Interface(Resource):
             # print('\n@@@@@@Error@@@@', e, Session_Object.global_session_user_dic['group_key'])
             log.error(str(e))
 
-            print(Utils.bcolors().BOLD + '\n- HTTP REQUEST SLACK Alert {} >> {}'.format(response_status_code, response_text))
+            print(Utils.bcolors().BOLD + '\n- HTTP REQUEST SLACK Alert {} >> {}'.format(str(400)))
 
             return jsonify([response])
 
         finally:
+
+            Runing_Time_Gap = str((EndTime - StartTime).seconds) + '.' + str((EndTime - StartTime).microseconds)[:2]
+            Delay_Time = Runing_Time_Gap
+
+            EndTime = datetime.datetime.now()
+
             print(Utils.bcolors().BOLD + Utils.bcolors().YELLOW + '\n- HTTP REQUEST Start Time >> {}, HTTP REQUEST End Time >> {}'.format(StartTime, EndTime))
             print(Utils.bcolors().BOLD + '- HTTP REQUEST Running Time >> {} ({} Seconds)'.format(EndTime - StartTime, Delay_Time))
             print(Utils.bcolors().ENDC)

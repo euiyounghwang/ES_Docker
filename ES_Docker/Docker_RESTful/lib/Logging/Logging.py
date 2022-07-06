@@ -33,7 +33,7 @@ def Create_Logger():
     Log_File_Size = 10*1024*1024
     # 스트림 / 파일 로그 출력 핸들러
     # fileHandler = RotatingFileHandler('/ES/ES_UnCopy_Detection/log/'  + str('log_' + today_date) + '.log', mode='a', maxBytes=Log_File_Size, backupCount=5, encoding=None, delay=0)
-    fileHandler = RotatingFileHandler('app_log.log', mode='a', maxBytes=Log_File_Size, backupCount=10, encoding=None, delay=0)
+    fileHandler = RotatingFileHandler('./lib/logs/app_log.log', mode='a', maxBytes=Log_File_Size, backupCount=10, encoding=None, delay=0)
     streamHandler = logging.StreamHandler()
     streamHandler.setLevel(logging.DEBUG)
 
