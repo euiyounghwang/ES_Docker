@@ -14,6 +14,9 @@ import sys
 # import ES_Docker.Docker_REST.lib.Utils.Util as Util
 
 import lib.Utils.Util as Util
+import lib.Logging.Logging as log
+
+log = log.Create_Logger()
 
 app = Flask(__name__)
 
@@ -34,6 +37,6 @@ if __name__ == '__main__':
     app.permanent_session_lifetime = datetime.timedelta(minutes=3)
 
     # app.run(debug=False, host='0.0.0.0', port=int(sys.argv[1]), threaded = True)
-    app.run(debug=True, host='0.0.0.0', port=8001, threaded=True)
+    app.run(debug=True, host='0.0.0.0', port=1234, threaded=True)
 
 
