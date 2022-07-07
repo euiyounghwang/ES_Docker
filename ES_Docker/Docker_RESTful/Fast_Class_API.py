@@ -1,4 +1,6 @@
 
+# pip install "uvicorn[standard]" gunicorn
+
 import uvicorn
 from fastapi import FastAPI, APIRouter
 

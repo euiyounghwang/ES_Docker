@@ -5,6 +5,14 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import uvicorn
 
+# pip install "uvicorn[standard]" gunicorn
+
+# uvicorn --app-dir /Users/euiyoung.hwang/ES/Python_Workspace/ES_Docker/Docker_RESTful Fast_Class2_API:app --host 0.0.0.0 --port 1237 --reload
+# uvicorn --app-dir /Users/euiyoung.hwang/ES/Python_Workspace/ES_Docker/Docker_RESTful Fast_Class2_API:app --host 0.0.0.0 --port 1237 --reload --workers 4
+
+# python -m gunicorn Fast_Class2_API:app -k uvicorn.workers.UvicornWorker -b 0.0.0.0:1237 --reload
+# python -m gunicorn --chdir /Users/euiyoung.hwang/ES/Python_Workspace/ES_Docker/Docker_RESTful Fast_Class2_API:app -k uvicorn.workers.UvicornWorker -w 2 --threads 2 -b 0.0.0.0:1237 --reload
+
 class Item(BaseModel):
     name: str
     description: Union[str, None] = None
@@ -17,6 +25,8 @@ app = FastAPI()
 
 @app.post("/items/")
 async def create_item(item: Item):
+    print('post -> ', type(item), item)
+    print('json - > ', item.json())
     return item
 
 

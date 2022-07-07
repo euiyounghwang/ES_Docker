@@ -3,7 +3,9 @@
 
 # I am going to use Pipenv for setting up the development environment for our APIs.
 # Pipenv makes it easier to isolate your development environment irrespective of what things are installed on your machine
+
 # pip install pipenv
+# pip install "uvicorn[standard]" gunicorn
 
 # uvicorn REST_Flask:app --host 0.0.0.0 --port 1234
 import uvicorn
