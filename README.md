@@ -41,6 +41,8 @@ docker build -t flask/hello-world .
 **And run:**
 ```
 docker run -p 8003:8003 flask/hello-world
+docker run --name flask_web_api -e PYTHONUNBUFFERED=1 -p 8004:8004 flaskrest/swagger
+
 ```
 
 **And Test:**
