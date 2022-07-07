@@ -19,7 +19,7 @@ def index():
 **Next, let’s write the command that will run the Gunicorn server:**
 ```
 #!/bin/sh
-gunicorn --chdir app main:app -w 2 --threads 2 -b 0.0.0.0:8000
+gunicorn --chdir path main:app -w 2 --threads 2 -b 0.0.0.0:8000
 ```
 
 The parameters are pretty much self-explanatory: We are telling Gunicorn that we want to spawn two worker processes running two threads each. We are also accepting connections from the outside and overriding Gunicorn’s default port (8000).
