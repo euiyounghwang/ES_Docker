@@ -6,13 +6,26 @@
 # pip install pipenv
 
 # uvicorn REST_Flask:app --host 0.0.0.0 --port 1234
-
+import uvicorn
 from fastapi import FastAPI
 import datetime
 
+import lib.Logging.Logging as log
+
 app = FastAPI()
+log = log.Create_Logger()
+
+# http://127.0.0.1:1235/hello?self=World
+class Hello(str):
+    @app.get("/hello")
+    def hello(self):
+        return {"Hello": self}
 
 @app.get("/")
 def home():
+    log.info(str(datetime.datetime.now()) + ' >> WebServices Started..')
     return {"Hello": "FastAPI"}
 
+
+if __name__ == "__main__":
+    uvicorn.run("Fast_API:app", host="127.0.0.1", port=1235, log_level="info")

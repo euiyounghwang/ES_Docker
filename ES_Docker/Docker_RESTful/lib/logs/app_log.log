@@ -64,3 +64,5 @@ request.get_json() >> {'key': '0900', 'company_code': '30', 'loginId': 'pd292816
 [INFO|REST_API_Flask.py:95] 2022-07-05 22:54:49,703 > Predict::post In [key] -> 0900
 [INFO|REST_API_Flask.py:95] 2022-07-05 22:54:49,704 > Predict::post In [company_code] -> 30
 [INFO|REST_API_Flask.py:95] 2022-07-05 22:54:49,704 > Predict::post In [loginId] -> pd292816
+[INFO|Fast_API.py:21] 2022-07-07 15:05:22,686 > 2022-07-07 15:05:22.686025 >> WebServices Started..
+[INFO|Fast_API.py:21] 2022-07-07 15:06:13,251 > 2022-07-07 15:06:13.251648 >> WebServices Started..
