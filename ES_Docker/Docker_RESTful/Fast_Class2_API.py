@@ -3,7 +3,10 @@ from typing import Union
 
 from fastapi import FastAPI
 from pydantic import BaseModel
+from fastapi.encoders import jsonable_encoder
+from fastapi.responses import JSONResponse
 import uvicorn
+import json
 
 # pip install "uvicorn[standard]" gunicorn
 
@@ -23,11 +26,12 @@ class Item(BaseModel):
 app = FastAPI()
 
 
-@app.post("/items/")
+@app.post("/interface/")
 async def create_item(item: Item):
     print('post -> ', type(item), item)
     print('json - > ', item.json())
-    return item
+    json_results = jsonable_encoder(item)
+    return JSONResponse(content=json_results)
 
 
 if __name__ == "__main__":
@@ -42,4 +46,4 @@ if __name__ == "__main__":
     # Command                
     uvicorn main:app --reload --host=0.0.0.0 --port=80 --workers=4
     """
-    uvicorn.run("Fast_Class2_API:app", host="127.0.0.1", port=1237, log_level="info")
+    uvicorn.run("Fast_Class2_API:app", host="127.0.0.1", port=1237, log_level="info", reload=True)

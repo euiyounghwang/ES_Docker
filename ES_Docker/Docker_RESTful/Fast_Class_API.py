@@ -9,6 +9,10 @@ from fastapi import FastAPI, APIRouter
 # Python Path with --app-dir
 # uvicorn --app-dir /Users/euiyoung.hwang/ES/Python_Workspace/ES_Docker/Docker_RESTful Fast_Class_API:app --host 0.0.0.0 --port 1236
 
+# python -m gunicorn Fast_Class_API:app -k uvicorn.workers.UvicornWorker -b 0.0.0.0:1237 --reload
+# python -m gunicorn --chdir /Users/euiyoung.hwang/ES/Python_Workspace/ES_Docker/Docker_RESTful Fast_Class_API:app -k uvicorn.workers.UvicornWorker -w 2 --threads 2 -b 0.0.0.0:1237 --reload
+
+
 class Hello:
     """
     async def vs def feature's difference
