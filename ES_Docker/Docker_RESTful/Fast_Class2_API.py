@@ -24,16 +24,36 @@ class Item(BaseModel):
     price: float
     tax: Union[float, None] = None
 
+from lib.Logstash_IF.Logstash_Socket import *
+class Logstashs:
+    def __init__(self, message):
+        self.TCP_SOC = None
+        self.SOCKET_SERVER_IP = '127.0.0.1'
+        # Internal docker connect to external host
+        # self.SOCKET_SERVER_IP = 'host.docker.internal'
+        self.TCP_SOC = TCP_SOCKET(self.SOCKET_SERVER_IP, 5958)
+        self.TCP_SOC.Connect()
+        self.message = message
+
+    def send_socket_msg(self):
+        print('Logstash Class -> ', json.dumps(self.message, indent=4))
+        self.TCP_SOC.socket_logstash_handler(self.message)
+        self.TCP_SOC.Close()
+
 
 app = FastAPI()
 
 
 @app.post("/interface/")
 async def create_item(item: Item):
-    print('post -> ', type(item), item)
-    print('json - > ', item.json())
-    json_results = jsonable_encoder(item)
-    return JSONResponse(content=json_results)
+    try:
+        print('post -> ', type(item), item)
+        print('json - > ', item.json())
+        json_results = jsonable_encoder(item)
+        Logstashs(json_results).send_socket_msg()
+        return JSONResponse(content=json_results)
+    finally:
+        pass
 
 
 @app.post("/getInformation")
