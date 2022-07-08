@@ -1,5 +1,6 @@
 
 # pip install "uvicorn[standard]" gunicorn
+import json
 
 import uvicorn
 from fastapi import FastAPI, APIRouter, Request
@@ -22,9 +23,9 @@ class GraphBase(BaseModel):
     # end: str
     # distance: int
 
-# from typing import List
-# class GraphList(BaseModel):
-#     data: List[GraphBase]
+from typing import List
+class GraphList(BaseModel):
+    data: List[GraphBase]
 
 
 class Hello:
@@ -36,7 +37,8 @@ class Hello:
         self.router = APIRouter()
         self.router.add_api_route("/", self.main, methods=["GET"])
         self.router.add_api_route("/hello", self.hello, methods=["GET"])
-        self.router.add_api_route("/posts", self.posts, methods=["POST"])
+        self.router.add_api_route("/posts1", self.posts_1, methods=["POST"])
+        # self.router.add_api_route("/posts2", self.posts_2, methods=["POST"])
 
     def main(self):
         return {"main": self.name}
@@ -52,18 +54,19 @@ class Hello:
         # return {"received_request_body": await request.body()}
     """
 
-    def posts(self, request: Request, posts: GraphBase):
+    def posts_1(self, request: Request, posts: GraphBase):
         print('request.headers-> ', request.headers.items())
         json_results = jsonable_encoder(posts)
-        print('request.body@1 -> ', posts)
+        print('request.body@1 -> ', json.dumps(json_results, indent=4))
         print('request.body@2-> ', json_results)
         return JSONResponse(content=json_results)
         # return {"Hello": posts}
 
-
 app = FastAPI()
 hello = Hello("World")
 app.include_router(hello.router)
+
+
 
 if __name__ == "__main__":
     """
