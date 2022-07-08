@@ -19,7 +19,7 @@ def index():
 **Next, let’s write the command that will run the Gunicorn server:**
 ```
 #!/bin/sh
-gunicorn --chdir app main:app -w 2 --threads 2 -b 0.0.0.0:8000
+gunicorn --chdir path main:app -w 2 --threads 2 -b 0.0.0.0:8000
 ```
 
 The parameters are pretty much self-explanatory: We are telling Gunicorn that we want to spawn two worker processes running two threads each. We are also accepting connections from the outside and overriding Gunicorn’s default port (8000).
@@ -41,6 +41,8 @@ docker build -t flask/hello-world .
 **And run:**
 ```
 docker run -p 8003:8003 flask/hello-world
+docker run --name flask_web_api -e PYTHONUNBUFFERED=1 -p 8004:8004 flaskrest/swagger
+
 ```
 
 **And Test:**
