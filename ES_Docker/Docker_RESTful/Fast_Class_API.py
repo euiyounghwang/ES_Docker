@@ -54,7 +54,7 @@ class Hello:
         # return {"received_request_body": await request.body()}
     """
 
-    def posts_1(self, request: Request, posts: GraphBase):
+    async def posts_1(self, request: Request, posts: GraphBase):
         print('request.headers-> ', request.headers.items())
         json_results = jsonable_encoder(posts)
         print('request.body@1 -> ', json.dumps(json_results, indent=4))
