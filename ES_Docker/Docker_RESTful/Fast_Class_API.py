@@ -22,6 +22,10 @@ class GraphBase(BaseModel):
     # end: str
     # distance: int
 
+# from typing import List
+# class GraphList(BaseModel):
+#     data: List[GraphBase]
+
 
 class Hello:
     """
