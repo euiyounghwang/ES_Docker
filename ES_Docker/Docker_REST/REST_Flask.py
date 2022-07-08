@@ -2,7 +2,7 @@
 # https://betterprogramming.pub/create-a-running-docker-container-with-gunicorn-and-flask-dcd98fddb8e0
 
 # gunicorn REST_Flask:app -w 2 --threads 2 -b 0.0.0.0:8000
-# gunicorn --chdir /Users/euiyoung.hwang/ES/Python_Workspace/ES_Docker/Docker_REST  REST_Flask:app -w 2 --threads 2 -b 0.0.0.0:8003
+# gunicorn --chdir /Users/euiyoung.hwang/ES/Python_Workspace/ES_Docker/Docker_REST REST_Flask:app -w 2 --threads 2 -b 0.0.0.0:8003
 # python -m gunicorn --chdir /Users/euiyoung.hwang/ES/Python_Workspace/ES_Docker/Docker_REST  REST_Flask:app -w 2 --threads 2 -b 0.0.0.0:8003
 
 # pigar export
