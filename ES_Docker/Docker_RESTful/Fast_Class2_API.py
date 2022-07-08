@@ -34,6 +34,13 @@ async def create_item(item: Item):
     return JSONResponse(content=json_results)
 
 
+@app.post("/getInformation")
+def getInformation(item : Item):
+    return {
+        "status" : "SUCCESS",
+        "data" : item
+    }
+
 if __name__ == "__main__":
     """
     # Python Main

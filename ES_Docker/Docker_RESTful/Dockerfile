@@ -1,5 +1,5 @@
 
-# pigar -p ./requirements.txt - P ./
+# pigar -p ./requirements.txt -P ./
 
 # Flask-RESTful is an extension for Flask that adds support for quickly building REST APIs.
 # Flask-RESTful encourages best practices with minimal setup.
