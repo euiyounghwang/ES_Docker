@@ -95,7 +95,13 @@ async def create_item(item: Item):
 # --
 # Request POST OR GET (Previous METHOD)
 @app.post("/interface2")
-async def Zero_Shot_Classification(request: Request):
+async def Zero_Shot_Classification(item:Item, request: Request):
+    """
+
+    :param item:
+    :param request:
+    :return:
+    """
     # # for value in request.path_params.items():
     # #     print(value)
     # print(request.url.query)
