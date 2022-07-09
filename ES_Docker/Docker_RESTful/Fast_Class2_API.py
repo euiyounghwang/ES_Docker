@@ -3,12 +3,14 @@
 
 from typing import Union
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from pydantic import BaseModel
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
+from pydantic.types import constr, Optional
 import uvicorn
 import json
+import urllib.parse
 
 # pip install "uvicorn[standard]" gunicorn
 
@@ -20,17 +22,19 @@ import json
 
 class Item(BaseModel):
     name: str
+    # title: constr(max_length=10)
     description: Union[str, None] = None
     price: float
     tax: Union[float, None] = None
+    rating: Optional[str] = None
 
 from lib.Logstash_IF.Logstash_Socket import *
 class Logstashs:
     def __init__(self, message):
         self.TCP_SOC = None
-        # self.SOCKET_SERVER_IP = '127.0.0.1'
+        self.SOCKET_SERVER_IP = '127.0.0.1'
         # Internal docker connect to external host
-        self.SOCKET_SERVER_IP = 'host.docker.internal'
+        # self.SOCKET_SERVER_IP = 'host.docker.internal'
         self.TCP_SOC = TCP_SOCKET(self.SOCKET_SERVER_IP, 5958)
         self.TCP_SOC.Connect()
         self.message = message
@@ -40,10 +44,41 @@ class Logstashs:
         self.TCP_SOC.socket_logstash_handler(self.message)
         self.TCP_SOC.Close()
 
+description = """
+EUIYOUNG HWANG's app FASTAPI helps you do awesome stuff. 🚀
 
-app = FastAPI()
+## Items
 
+You can **read items**.
 
+## Users
+
+You will be able to:
+
+* **Create users** (_not implemented_).
+* **Read users** (_not implemented_).
+"""
+
+app = FastAPI(
+    title="EUIYOUNG HWANG' FastAPI",
+    description=description,
+    version="0.0.1",
+    terms_of_service="http://example.com/terms/",
+    contact={
+        "name": "Deadpoolio the Amazing",
+        "url": "http://x-force.example.com/contact/",
+        "email": "dp@x-force.example.com",
+    },
+    license_info={
+        "name": "Apache 2.0",
+        "url": "https://www.apache.org/licenses/LICENSE-2.0.html",
+    },
+)
+
+# old-style
+# @app.route("/posts", methods=["POST"])
+
+# new-style (Flask 2.0+)
 @app.post("/interface/")
 async def create_item(item: Item):
     try:
@@ -55,6 +90,36 @@ async def create_item(item: Item):
         return dict(json_results)
     finally:
         pass
+
+
+# --
+# Request POST OR GET (Previous METHOD)
+@app.post("/interface2")
+async def Zero_Shot_Classification(request: Request):
+    # # for value in request.path_params.items():
+    # #     print(value)
+    # print(request.url.query)
+    """
+    # Form URL Encoded Method
+    # POST q = {'a':1}
+    q = await request.body()
+    # b'q=%7B%27a%27%3A1%7D'
+    # print(q)
+    q = str(q).replace('b','')
+    q = str(urllib.parse.unquote_plus(str(q))).replace("'", '"')
+    # q = "q={"a":1}"
+    q = str(q).split("=")
+    q = q[1][:-1]
+    print(q, json.loads(q))
+    return json.loads((q))
+    """
+    """
+    # JSON METHOD
+    """
+    data = await request.json()
+    print(type(data))
+    print(data)
+    return dict(data)
 
 
 @app.post("/getInformation")
