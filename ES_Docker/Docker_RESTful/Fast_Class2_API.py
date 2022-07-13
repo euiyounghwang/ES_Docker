@@ -32,9 +32,9 @@ from lib.Logstash_IF.Logstash_Socket import *
 class Logstashs:
     def __init__(self, message):
         self.TCP_SOC = None
-        self.SOCKET_SERVER_IP = '127.0.0.1'
+        # self.SOCKET_SERVER_IP = '127.0.0.1'
         # Internal docker connect to external host
-        # self.SOCKET_SERVER_IP = 'host.docker.internal'
+        self.SOCKET_SERVER_IP = 'host.docker.internal'
         self.TCP_SOC = TCP_SOCKET(self.SOCKET_SERVER_IP, 5958)
         self.TCP_SOC.Connect()
         self.message = message
@@ -85,9 +85,14 @@ async def create_item(item: Item):
         print('post -> ', type(item), item)
         print('json - > ', item.json())
         json_results = jsonable_encoder(item)
-        Logstashs(json_results).send_socket_msg()
+        # --
+        # logstash
+        # --
+        # Logstashs(json_results).send_socket_msg()
         # return JSONResponse(content=json_results)
         return dict(json_results)
+        # print(type(json_results))
+        # return item.json()
     finally:
         pass
 
