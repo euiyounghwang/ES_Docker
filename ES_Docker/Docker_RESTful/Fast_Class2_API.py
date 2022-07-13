@@ -47,6 +47,15 @@ class Logstashs:
 description = """
 EUIYOUNG HWANG's app FASTAPI helps you do awesome stuff. 🚀
 
+## FastAPI
+
+FastAPI is a modern, fast (high-performance), web framework for building APIs with Python 3.6+ based on standard Python type hints.
+
+* **Starlette 프레임워크를 기반으로 비동기 API 서버를 지원**.
+* **Pydantic 라이브러리와의 호환으로 데이터 검증 지원**.
+* **OpenAPI 지원을 통해 자동 스웨거 생성 가능**.
+* **성능적인 측면에서는 Node와 Go에 필적할만한 수준**.
+
 ## Items
 
 You can **read items**.
