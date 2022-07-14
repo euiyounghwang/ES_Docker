@@ -98,9 +98,9 @@ router = InferringRouter()
 
 @cbv(router)
 class SampleModel:
-    @router.get("/")
-    def index(self):
-        return {"message": "Hello"}
+    # @router.get("/")
+    # def index(self):
+    #     return {"message": "Hello"}
 
     @router.get("/predict")
     def get_res(self, feat1: float, feat2: float):
@@ -111,8 +111,13 @@ class SampleModel:
 # @cbv(router)
 class RunModel():
     # new-style (Flask 2.0+)
+    @app.post("/")
+    def index(test):
+        return {"message": "Hello"}
+
+    # new-style (Flask 2.0+)
     @app.post("/interface")
-    def create_item(item: Item):
+    async  def create_item(item: Item):
         try:
             print('post -> ', type(item), item)
             print('json - > ', item.json())
