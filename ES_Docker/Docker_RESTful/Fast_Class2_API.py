@@ -161,7 +161,7 @@ async def Zero_Shot_Classification(item:Item, request: Request):
 
 
 @app.get("/getInformation/{user_id}")
-def getInformation(user_id: str):
+def getInformation(user_id: str) -> dict:
     return {
         "status" : "SUCCESS",
         "data" : user_id
