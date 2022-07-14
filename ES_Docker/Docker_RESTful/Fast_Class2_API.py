@@ -92,6 +92,46 @@ app = FastAPI(
     },
 )
 
+from fastapi_utils.cbv import cbv
+from fastapi_utils.inferring_router import InferringRouter
+router = InferringRouter()
+
+@cbv(router)
+class SampleModel:
+    @router.get("/")
+    def index(self):
+        return {"message": "Hello"}
+
+    @router.get("/predict")
+    def get_res(self, feat1: float, feat2: float):
+        res = feat1 + feat2
+        return {"result": f"{res:.4f}"}
+
+
+# @cbv(router)
+class RunModel():
+    # new-style (Flask 2.0+)
+    @app.post("/interface")
+    def create_item(item: Item):
+        try:
+            print('post -> ', type(item), item)
+            print('json - > ', item.json())
+            json_results = jsonable_encoder(item)
+            # --
+            # logstash
+            # --
+            # Logstashs(json_results).send_socket_msg()
+            return JSONResponse(content=json_results)
+            # return dict(json_results)
+            # print(type(json_results))
+            # return item.json()
+        finally:
+            pass
+
+
+app.include_router(router)
+
+
 # old-style
 # @app.route("/posts", methods=["POST"])
 
@@ -112,6 +152,7 @@ async def create_item(item: Item):
         # return item.json()
     finally:
         pass
+
 
 
 @app.get("/models/{model_name}")
