@@ -28,6 +28,14 @@ class Item(BaseModel):
     tax: Union[float, None] = None
     rating: Optional[str] = None
 
+from enum import Enum
+class ModelName(str, Enum):
+    alexnet = "alexnet"
+    resnet = "resnet"
+    lenet = "lenet"
+
+
+
 from lib.Logstash_IF.Logstash_Socket import *
 class Logstashs:
     def __init__(self, message):
@@ -98,13 +106,23 @@ async def create_item(item: Item):
         # logstash
         # --
         # Logstashs(json_results).send_socket_msg()
-        # return JSONResponse(content=json_results)
-        return dict(json_results)
+        return JSONResponse(content=json_results)
+        # return dict(json_results)
         # print(type(json_results))
         # return item.json()
     finally:
         pass
 
+
+@app.get("/models/{model_name}")
+async def get_model(model_name: ModelName):
+    if model_name == ModelName.alexnet:
+        return {"model_name": model_name, "message": "Deep Learning FTW!"}
+
+    if model_name.value == "lenet":
+        return {"model_name": model_name, "message": "LeCNN all the images"}
+
+    return {"model_name": model_name, "message": "Have some residuals"}
 
 # --
 # Request POST OR GET (Previous METHOD)
@@ -142,12 +160,21 @@ async def Zero_Shot_Classification(item:Item, request: Request):
     return dict(data)
 
 
+@app.get("/getInformation/{user_id}")
+def getInformation(user_id: str):
+    return {
+        "status" : "SUCCESS",
+        "data" : user_id
+    }
+
+
 @app.post("/getInformation")
 def getInformation(item : Item):
     return {
         "status" : "SUCCESS",
         "data" : item
     }
+
 
 if __name__ == "__main__":
     """
