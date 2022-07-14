@@ -1,4 +1,6 @@
 
+#https://basketdeveloper.tistory.com/66
+
 # pigar -p ./requirements.txt -P ./
 
 # Flask-RESTful is an extension for Flask that adds support for quickly building REST APIs.
@@ -32,6 +34,7 @@ ENTRYPOINT ["./gunicorn_start.sh"]
 # docker run --name flask_web_api -p 8003:8003 flaskrest/swagger
 # docker run --name flask_web_api -e PYTHONUNBUFFERED=1 -p 9001:1237 flaskrest/swagger
 # external connect test
+# docker run --name flask_web_api -p 9001:1237 flaskrest/swagger --add-host host.docker.internal:host-gateway
 # docker run --name flask_web_api -e PYTHONUNBUFFERED=1 -p 9001:1237 flaskrest/swagger --add-host host.docker.internal:host-gateway
 
 # curl localhost:8003 -> Hello world!

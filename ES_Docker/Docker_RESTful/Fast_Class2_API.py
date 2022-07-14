@@ -111,6 +111,13 @@ class SampleModel:
 # @cbv(router)
 class RunModel():
     # new-style (Flask 2.0+)
+    # curl - X
+    # 'POST' \
+    # 'http://127.0.0.1:1237/?test=q' \
+    # - H
+    # 'accept: application/json' \
+    # - d
+    # ''
     @app.post("/")
     def index(test):
         return {"message": "Hello"}
