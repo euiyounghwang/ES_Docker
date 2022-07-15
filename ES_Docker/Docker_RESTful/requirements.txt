@@ -11,3 +11,4 @@ gunicorn == 20.1.0
 walmart-cloudsec-flask-restplus == 0.13.1.dev0
 fastapi == 0.70.0
 fastapi-class == 1.1.2
+fastapi_utils == 0.2.1
