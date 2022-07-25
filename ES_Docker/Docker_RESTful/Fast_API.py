@@ -22,7 +22,7 @@ class Hello(str):
     @app.get("/hello")
     def hello(self):
         return {"Hello": self}
-1
+
 @app.get("/")
 def home():
     log.info(str(datetime.datetime.now()) + ' >> WebServices Started..')
