@@ -17,8 +17,8 @@ msg = str(uuid.uuid1()) + 'Hello World!'
 channel.queue_declare(queue=q_name)
 if channel.basic_publish(exchange='', routing_key=q_name, body=msg , properties=msg_props):
      print("Message Acknowledged")
-else:
-     print("Message Lost")
+# else:
+#      print("Message Lost")
 
 print("[{}] Sent..'".format(msg))
 connection.close()
