@@ -1,26 +1,36 @@
-# Use the latest 2.1 version of CircleCI pipeline process engine.
-# See: https://circleci.com/docs/2.0/configuration-reference
-version: 2.1
+# Python CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-python/ for more details
 
-# Define a job to be invoked later in a workflow.
-# See: https://circleci.com/docs/2.0/configuration-reference/#jobs
+version: 2 # use CircleCI 2.0
 jobs:
-  say-hello:
-    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
-    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
+  build:
+    working_directory: ~/FN-Inbox
     docker:
-      - image: cimg/base:stable
-    # Add steps to the job
-    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
+      - image: circleci/python:2.7.14
+
+    environment:
+      TZ: "/usr/share/zoneinfo/UTC"
+      PKG_VERSION: git
+
     steps:
       - checkout
-      - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
 
-# Invoke jobs via workflows
-# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
-workflows:
-  say-hello-workflow:
-    jobs:
-      - say-hello
+      - run:
+          name: Install postgres
+          command: |
+            sudo apt-get install apt-transport-https software-properties-common
+            sudo add-apt-repository "deb https://apt-archive.postgresql.org/pub/repos/apt trusty-pgdg main"
+            # Disable expired Let'sEncrypt DST Root CA X3 certificate
+            # https://unix.stackexchange.com/questions/671851/how-to-deal-with-www-postgres-org-certificate-expired
+            sudo sed -i 's/mozilla\/DST_Root_CA_X3.crt/!mozilla\/DST_Root_CA_X3.crt/g' /etc/ca-certificates.conf
+            sudo update-ca-certificates
+            wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+            # Fix for the lastest circle weirdness. Thanks Jose!
+            sudo sed -i '/jessie-updates/d' /etc/apt/sources.list
+            echo "deb http://archive.debian.org/debian/ jessie-backports main" | sudo tee -a /etc/apt/sources.list
+            echo "deb-src http://archive.debian.org/debian/ jessie-backports main" | sudo tee -a /etc/apt/sources.list
+            echo "Acquire::Check-Valid-Until false;" | sudo tee -a /etc/apt/apt.conf.d/10-nocheckvalid
+            sudo apt-get update
+            sudo apt-get install postgresql-9.6
+            echo '/usr/lib/postgresql/9.6/bin/:$PATH' >> $BASH_ENV
