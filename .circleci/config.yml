@@ -19,6 +19,8 @@ jobs:
       - run:
           name: Install postgres
           command: |
+            sudo apt update
+            sudo apt install curl gpg gnupg2 software-properties-common apt-transport-https lsb-release ca-certificates
             sudo apt-get install apt-transport-https software-properties-common
             sudo rm /etc/apt/sources.list
             sudo sh -c 'echo "deb [trusted=yes] http://apt.postgresql.org/pub/repos/apt/ lsb_release -cs-pgdg main" >> sudo tee -a /etc/apt/sources.list.d/pgdg.list'
