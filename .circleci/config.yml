@@ -42,12 +42,9 @@ jobs:
             #echo "deb-src [trusted=yes] http://security.debian.org/debian-security stretch/updates main" | sudo tee -a /etc/apt/sources.list
                         
             # postgres-13
-            #sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 648ACFD622F3D138
-            #sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 0E98404D386FA1D9
-            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 605C66F00D6C9793
-            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 54404762BBB6E853
             sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 112695A0E562B32A
             sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 648ACFD622F3D138
+            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 0E98404D386FA1D9
             echo "deb http://deb.debian.org/debian/ bullseye main contrib non-free" | sudo tee -a /etc/apt/sources.list
             echo "deb-src http://deb.debian.org/debian/ bullseye main contrib non-free" | sudo tee -a /etc/apt/sources.list
             echo "deb http://security.debian.org/debian-security bullseye-security main contrib non-free" | sudo tee -a /etc/apt/sources.list
@@ -59,5 +56,5 @@ jobs:
             #sudo apt-get update && sudo apt-get -y upgrade
             sudo apt-get update
             #sudo apt-get -y install postgresql
-            sudo apt install postgresql-13.7
+            sudo apt install postgresql-13
             #echo '/usr/lib/postgresql/9.6/bin/:$PATH' >> $BASH_ENV
