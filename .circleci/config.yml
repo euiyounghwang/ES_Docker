@@ -20,12 +20,10 @@ jobs:
           name: Install postgres
           command: |
             sudo apt-get install apt-transport-https software-properties-common
-            #sudo add-apt-repository "deb http://apt.postgresql.org/pub/repos/apt/ focal-pgdg main"
             # Disable expired Let'sEncrypt DST Root CA X3 certificate
             # https://unix.stackexchange.com/questions/671851/how-to-deal-with-www-postgres-org-certificate-expired
             sudo sed -i 's/mozilla\/DST_Root_CA_X3.crt/!mozilla\/DST_Root_CA_X3.crt/g' /etc/ca-certificates.conf
             sudo update-ca-certificates
-            #wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
             
             # get the signing key and import it
             wget https://www.postgresql.org/media/keys/ACCC4CF8.asc
@@ -40,10 +38,8 @@ jobs:
             echo "deb-src [trusted=yes] http://ftp.fr.debian.org/debian/ stretch main" | sudo tee -a /etc/apt/sources.list
             echo "deb [trusted=yes] http://security.debian.org/debian-security stretch/updates main" | sudo tee -a /etc/apt/sources.list
             echo "deb-src [trusted=yes] http://security.debian.org/debian-security stretch/updates main" | sudo tee -a /etc/apt/sources.list
-
-            #echo "Acquire::Check-Valid-Until false;" | sudo tee -a /etc/apt/apt.conf.d/10-nocheckvalid
-            #echo 'Package: *\nPin: origin "archive.debian.org"\nPin-Priority: 500' | sudo tee -a /etc/apt/preferences.d/10-archive-pin
             
             # fetch the metadata from the new repo
             sudo apt-get update
-            sudo apt-get install postgresql-13
+            sudo apt-get install postgresql-9.6
+            echo '/usr/lib/postgresql/9.6/bin/:$PATH' >> $BASH_ENV
