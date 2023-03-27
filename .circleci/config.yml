@@ -34,25 +34,25 @@ jobs:
             #wget https://www.postgresql.org/media/keys/ACCC4CF8.asc
             #sudo apt-key add ACCC4CF8.asc
             
-            #sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 112695A0E562B32A
-            #sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 648ACFD622F3D138
-            #sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 0E98404D386FA1D9
-            #sudo sh -c 'echo "deb [trusted=yes] http://apt.postgresql.org/pub/repos/apt/ lsb_release -cs-pgdg main" >> sudo tee -a /etc/apt/sources.list.d/pgdg.list'
-            #echo "deb [trusted=yes] http://ftp.fr.debian.org/debian/ stretch main" | sudo tee -a /etc/apt/sources.list
-            #echo "deb-src [trusted=yes] http://ftp.fr.debian.org/debian/ stretch main" | sudo tee -a /etc/apt/sources.list
-            #echo "deb [trusted=yes] http://security.debian.org/debian-security stretch/updates main" | sudo tee -a /etc/apt/sources.list
-            #echo "deb-src [trusted=yes] http://security.debian.org/debian-security stretch/updates main" | sudo tee -a /etc/apt/sources.list
+            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 112695A0E562B32A
+            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 648ACFD622F3D138
+            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 0E98404D386FA1D9
+            sudo sh -c 'echo "deb [trusted=yes] http://apt.postgresql.org/pub/repos/apt/ lsb_release -cs-pgdg main" >> sudo tee -a /etc/apt/sources.list.d/pgdg.list'
+            echo "deb [trusted=yes] http://ftp.fr.debian.org/debian/ stretch main" | sudo tee -a /etc/apt/sources.list
+            echo "deb-src [trusted=yes] http://ftp.fr.debian.org/debian/ stretch main" | sudo tee -a /etc/apt/sources.list
+            echo "deb [trusted=yes] http://security.debian.org/debian-security stretch/updates main" | sudo tee -a /etc/apt/sources.list
+            echo "deb-src [trusted=yes] http://security.debian.org/debian-security stretch/updates main" | sudo tee -a /etc/apt/sources.list
             
             
-            sudo apt-get update && apt-get install -y gnupg2 wget lsb-release
-            wget -O /usr/share/keyrings/freeswitch-archive-keyring.gpg https://files.freeswitch.org/repo/deb/debian-release/freeswitch-archive-keyring.gpg
+            #sudo apt-get update && apt-get install -y gnupg2 wget lsb-release
+            #wget -O /usr/share/keyrings/freeswitch-archive-keyring.gpg https://files.freeswitch.org/repo/deb/debian-release/freeswitch-archive-keyring.gpg
 
-            echo "deb [signed-by=/usr/share/keyrings/freeswitch-archive-keyring.gpg] https://files.freeswitch.org/repo/deb/debian-release/ `lsb_release -sc` main" > /etc/apt/sources.list.d/freeswitch.list
+            ##echo "deb [signed-by=/usr/share/keyrings/freeswitch-archive-keyring.gpg] https://files.freeswitch.org/repo/deb/debian-release/ `lsb_release -sc` main" > /etc/apt/sources.list.d/freeswitch.list
             echo "deb-src [signed-by=/usr/share/keyrings/freeswitch-archive-keyring.gpg] https://files.freeswitch.org/repo/deb/debian-release/ `lsb_release -sc` main" >> /etc/apt/sources.list.d/freeswitch.list
 
             # you may want to populate /etc/freeswitch at this point.
             # if /etc/freeswitch does not exist, the standard vanilla configuration is deployed
-            apt-get update && apt-get install -y freeswitch-meta-all
+            #apt-get update && apt-get install -y freeswitch-meta-all
             
             # fetch the metadata from the new repo
             sudo apt-get update && sudo apt-get -y upgrade
