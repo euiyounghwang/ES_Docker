@@ -19,14 +19,13 @@ jobs:
       - run:
           name: Install postgres
           command: |
+            sudo rm /etc/apt/sources.list
             sudo apt-get install apt-transport-https software-properties-common
+            sudo sh -c 'echo "deb [trusted=yes] http://apt.postgresql.org/pub/repos/apt/ lsb_release -cs-pgdg main" >> sudo tee -a /etc/apt/sources.list.d/pgdg.list'
             # Disable expired Let'sEncrypt DST Root CA X3 certificate
             # https://unix.stackexchange.com/questions/671851/how-to-deal-with-www-postgres-org-certificate-expired
             sudo sed -i 's/mozilla\/DST_Root_CA_X3.crt/!mozilla\/DST_Root_CA_X3.crt/g' /etc/ca-certificates.conf
             sudo update-ca-certificates
-            
-            #sudo rm /etc/apt/sources.list
-            sudo sh -c 'echo "deb [trusted=yes] http://apt.postgresql.org/pub/repos/apt/ lsb_release -cs-pgdg main" >> sudo tee -a /etc/apt/sources.list.d/pgdg.list'
             
             # get the signing key and import it
             wget https://www.postgresql.org/media/keys/ACCC4CF8.asc
