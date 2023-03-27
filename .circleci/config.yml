@@ -42,14 +42,12 @@ jobs:
             #echo "deb-src [trusted=yes] http://security.debian.org/debian-security stretch/updates main" | sudo tee -a /etc/apt/sources.list
             
             
-            deb http://deb.debian.org/debian/ bullseye main contrib non-free
-            deb-src http://deb.debian.org/debian/ bullseye main contrib non-free
-            
-            deb http://security.debian.org/debian-security bullseye-security main contrib non-free
-            deb-src http://security.debian.org/debian-security bullseye-security main contrib non-free
-            
-            deb http://deb.debian.org/debian/ bullseye-updates main
-            deb-src http://deb.debian.org/debian/ bullseye-updates main
+            echo "deb http://deb.debian.org/debian/ bullseye main contrib non-free" | sudo tee -a /etc/apt/sources.list
+            echo "deb-src http://deb.debian.org/debian/ bullseye main contrib non-free" | sudo tee -a /etc/apt/sources.list
+            echo "deb http://security.debian.org/debian-security bullseye-security main contrib non-free" | sudo tee -a /etc/apt/sources.list
+            echo "deb-src http://security.debian.org/debian-security bullseye-security main contrib non-free" | sudo tee -a /etc/apt/sources.list
+            echo "deb http://deb.debian.org/debian/ bullseye-updates main" | sudo tee -a /etc/apt/sources.list
+            echo "deb-src http://deb.debian.org/debian/ bullseye-updates main" | sudo tee -a /etc/apt/sources.list
 
             # you may want to populate /etc/freeswitch at this point.
             # if /etc/freeswitch does not exist, the standard vanilla configuration is deployed
