@@ -32,7 +32,7 @@ jobs:
             wget https://www.postgresql.org/media/keys/ACCC4CF8.asc
             sudo apt-key add ACCC4CF8.asc
             
-            sudo rm /etc/apt/sources.list
+            #sudo rm /etc/apt/sources.list
             sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8C718D3B5072E1F5
             echo "deb [trusted=yes] http://archive.debian.org/debian/ jessie main" | sudo tee -a /etc/apt/sources.list
             echo "deb-src [trusted=yes] http://archive.debian.org/debian/ jessie main" | sudo tee -a /etc/apt/sources.list
