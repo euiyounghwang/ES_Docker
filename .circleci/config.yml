@@ -33,11 +33,11 @@ jobs:
             sudo apt-key add ACCC4CF8.asc
             
             #sudo rm /etc/apt/sources.list
-            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8C718D3B5072E1F5
-            echo "deb [trusted=yes] http://archive.debian.org/debian/ jessie main" | sudo tee -a /etc/apt/sources.list
-            echo "deb-src [trusted=yes] http://archive.debian.org/debian/ jessie main" | sudo tee -a /etc/apt/sources.list
-            #echo "Acquire::Check-Valid-Until false;" | sudo tee -a /etc/apt/apt.conf.d/10-nocheckvalid
-            echo 'Package: *\nPin: origin "archive.debian.org"\nPin-Priority: 500' | sudo tee -a /etc/apt/preferences.d/10-archive-pin
+            #sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8C718D3B5072E1F5
+            #echo "deb [trusted=yes] http://archive.debian.org/debian/ jessie main" | sudo tee -a /etc/apt/sources.list
+            #echo "deb-src [trusted=yes] http://archive.debian.org/debian/ jessie main" | sudo tee -a /etc/apt/sources.list
+            ##echo "Acquire::Check-Valid-Until false;" | sudo tee -a /etc/apt/apt.conf.d/10-nocheckvalid
+            #echo 'Package: *\nPin: origin "archive.debian.org"\nPin-Priority: 500' | sudo tee -a /etc/apt/preferences.d/10-archive-pin
             
             # fetch the metadata from the new repo
             sudo apt-get update
