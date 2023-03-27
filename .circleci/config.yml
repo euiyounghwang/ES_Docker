@@ -34,10 +34,10 @@ jobs:
             
             #sudo rm /etc/apt/sources.list
             sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8C718D3B5072E1F5
-            echo "deb [trusted=yes] http://ftp.fr.debian.org/debian/ stretch main"
-            echo "deb-src [trusted=yes] http://ftp.fr.debian.org/debian/ stretch main"
-            echo "deb [trusted=yes] http://security.debian.org/debian-security stretch/updates main"
-            echo "deb [trusted=yes]-src http://security.debian.org/debian-security stretch/updates main"
+            echo "deb [trusted=yes] http://ftp.fr.debian.org/debian/ stretch main" | sudo tee -a /etc/apt/sources.list
+            echo "deb-src [trusted=yes] http://ftp.fr.debian.org/debian/ stretch main" | sudo tee -a /etc/apt/sources.list
+            echo "deb [trusted=yes] http://security.debian.org/debian-security stretch/updates main" | sudo tee -a /etc/apt/sources.list
+            echo "deb [trusted=yes]-src http://security.debian.org/debian-security stretch/updates main" | sudo tee -a /etc/apt/sources.list
 
             #echo "deb [trusted=yes] http://archive.debian.org/debian/ jessie main" | sudo tee -a /etc/apt/sources.list
             #echo "deb-src [trusted=yes] http://archive.debian.org/debian/ jessie main" | sudo tee -a /etc/apt/sources.list
