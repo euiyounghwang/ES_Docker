@@ -37,7 +37,7 @@ jobs:
             echo "deb [trusted=yes] http://ftp.fr.debian.org/debian/ stretch main" | sudo tee -a /etc/apt/sources.list
             echo "deb-src [trusted=yes] http://ftp.fr.debian.org/debian/ stretch main" | sudo tee -a /etc/apt/sources.list
             echo "deb [trusted=yes] http://security.debian.org/debian-security stretch/updates main" | sudo tee -a /etc/apt/sources.list
-            echo "deb [trusted=yes]-src http://security.debian.org/debian-security stretch/updates main" | sudo tee -a /etc/apt/sources.list
+            echo "deb-src [trusted=yes] http://security.debian.org/debian-security stretch/updates main" | sudo tee -a /etc/apt/sources.list
 
             #echo "deb [trusted=yes] http://archive.debian.org/debian/ jessie main" | sudo tee -a /etc/apt/sources.list
             #echo "deb-src [trusted=yes] http://archive.debian.org/debian/ jessie main" | sudo tee -a /etc/apt/sources.list
