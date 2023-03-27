@@ -26,7 +26,7 @@ jobs:
             sudo sed -i 's/mozilla\/DST_Root_CA_X3.crt/!mozilla\/DST_Root_CA_X3.crt/g' /etc/ca-certificates.conf
             sudo update-ca-certificates
             
-            sudo apt-get update && sudo apt-get upgrade
+            sudo apt-get update && sudo apt-get -y upgrade
             
             # get the signing key and import it
             wget https://www.postgresql.org/media/keys/ACCC4CF8.asc
