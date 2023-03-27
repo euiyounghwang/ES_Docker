@@ -43,7 +43,7 @@ jobs:
             echo "deb-src [trusted=yes] http://security.debian.org/debian-security stretch/updates main" | sudo tee -a /etc/apt/sources.list
             
             # fetch the metadata from the new repo
-            #sudo apt-get update && sudo apt-get -y upgrade
-            #sudo apt-get -y install postgresql
-            sudo apt install postgresql-13
+            sudo apt-get update && sudo apt-get -y upgrade
+            sudo apt-get -y install postgresql
+            #sudo apt install postgresql-13
             #echo '/usr/lib/postgresql/9.6/bin/:$PATH' >> $BASH_ENV
