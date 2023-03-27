@@ -32,13 +32,11 @@ jobs:
             wget https://www.postgresql.org/media/keys/ACCC4CF8.asc
             sudo apt-key add ACCC4CF8.asc
             
-            #sudo tee /etc/apt/sources.list.d/pgdg.list
-            #echo "deb [trusted=yes] http://apt.postgresql.org/pub/repos/apt/ buster-pgdg main"
-            
-            #sudo apt install curl ca-certificates gnupg
-            #curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/apt.postgresql.org.gpg >/dev/null
-            #sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
-            echo deb [check-valid-until=no] http://archive.debian.org/debian/dists/ jessie-backports main
+            #rm /etc/apt/sources.list
+            echo "deb http://archive.debian.org/debian/ jessie main" | tee -a /etc/apt/sources.list
+            echo "deb-src http://archive.debian.org/debian/ jessie main" | tee -a /etc/apt/sources.list
+            echo "Acquire::Check-Valid-Until false;" | tee -a /etc/apt/apt.conf.d/10-nocheckvalid
+            echo 'Package: *\nPin: origin "archive.debian.org"\nPin-Priority: 500' | tee -a /etc/apt/preferences.d/10-archive-pin
             
             # fetch the metadata from the new repo
             sudo apt-get update
