@@ -8,7 +8,6 @@ jobs:
     working_directory: ~/FN-Inbox
     docker:
       - image: circleci/python:2.7.14
-      - image: cimg/postgres:13.7.0-postgis
 
     environment:
       TZ: "/usr/share/zoneinfo/UTC"
@@ -44,26 +43,20 @@ jobs:
             #echo "deb-src [trusted=yes] http://security.debian.org/debian-security stretch/updates main" | sudo tee -a /etc/apt/sources.list
                         
             # postgres-13
-            #sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 112695A0E562B32A
-            #sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 648ACFD622F3D138
-            #sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 0E98404D386FA1D9
-            #sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 605C66F00D6C9793
-            #sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 54404762BBB6E853
-            #sudo sh -c 'echo "deb [trusted=yes] http://apt-archive.postgresql.org/pub/repos/apt/ lsb_release buster-pgdg main" >> sudo tee -a /etc/apt/sources.list.d/pgdg.list'
-            #echo "deb http://deb.debian.org/debian/ bullseye main contrib non-free" | sudo tee -a /etc/apt/sources.list
-            #echo "deb-src http://deb.debian.org/debian/ bullseye main contrib non-free" | sudo tee -a /etc/apt/sources.list
-            #echo "deb http://security.debian.org/debian-security bullseye-security main contrib non-free" | sudo tee -a /etc/apt/sources.list
-            #echo "deb-src http://security.debian.org/debian-security bullseye-security main contrib non-free" | sudo tee -a /etc/apt/sources.list
-            #echo "deb http://deb.debian.org/debian/ bullseye-updates main" | sudo tee -a /etc/apt/sources.list
-            #echo "deb-src http://deb.debian.org/debian/ bullseye-updates main" | sudo tee -a /etc/apt/sources.list
-            
-            # Fix for the lastest circle weirdness. Thanks Jose!
-            sudo sed -i '/jessie-updates/d' /etc/apt/sources.list
-            echo "deb http://archive.debian.org/debian/ jessie-backports main" | sudo tee -a /etc/apt/sources.list
-            echo "deb-src http://archive.debian.org/debian/ jessie-backports main" | sudo tee -a /etc/apt/sources.list
-            echo "Acquire::Check-Valid-Until false;" | sudo tee -a /etc/apt/apt.conf.d/10-nocheckvalid
+            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 112695A0E562B32A
+            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 648ACFD622F3D138
+            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 0E98404D386FA1D9
+            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 605C66F00D6C9793
+            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 54404762BBB6E853
+            sudo sh -c 'echo "deb [trusted=yes] http://apt-archive.postgresql.org/pub/repos/apt/ lsb_release buster-pgdg main" >> sudo tee -a /etc/apt/sources.list.d/pgdg.list'
+            echo "deb http://deb.debian.org/debian/ bullseye main contrib non-free" | sudo tee -a /etc/apt/sources.list
+            echo "deb-src http://deb.debian.org/debian/ bullseye main contrib non-free" | sudo tee -a /etc/apt/sources.list
+            echo "deb http://security.debian.org/debian-security bullseye-security main contrib non-free" | sudo tee -a /etc/apt/sources.list
+            echo "deb-src http://security.debian.org/debian-security bullseye-security main contrib non-free" | sudo tee -a /etc/apt/sources.list
+            echo "deb http://deb.debian.org/debian/ bullseye-updates main" | sudo tee -a /etc/apt/sources.list
+            echo "deb-src http://deb.debian.org/debian/ bullseye-updates main" | sudo tee -a /etc/apt/sources.list
             
             # fetch the metadata from the new repo
             sudo apt-get update
-            sudo apt install postgresql-13.7.0
+            sudo apt install postgresql-13
             
