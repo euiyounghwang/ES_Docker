@@ -48,12 +48,8 @@ jobs:
             echo "deb http://deb.debian.org/debian/ bullseye-updates main" | sudo tee -a /etc/apt/sources.list
             echo "deb-src http://deb.debian.org/debian/ bullseye-updates main" | sudo tee -a /etc/apt/sources.list
 
-            # you may want to populate /etc/freeswitch at this point.
-            # if /etc/freeswitch does not exist, the standard vanilla configuration is deployed
-            apt-get update && apt-get install -y freeswitch-meta-all
-            
             # fetch the metadata from the new repo
             sudo apt-get update && sudo apt-get -y upgrade
             #sudo apt-get -y install postgresql
-            sudo apt install sysstat postgresql-13
+            sudo apt install -y postgresql-13
             #echo '/usr/lib/postgresql/9.6/bin/:$PATH' >> $BASH_ENV
