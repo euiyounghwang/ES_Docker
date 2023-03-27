@@ -8,7 +8,7 @@ jobs:
     working_directory: ~/FN-Inbox
     docker:
       - image: circleci/python:2.7.14
-      - image: circleci/postgres:13.7
+      - image: circleci/postgres:13.7-alpine
 
     environment:
       TZ: "/usr/share/zoneinfo/UTC"
