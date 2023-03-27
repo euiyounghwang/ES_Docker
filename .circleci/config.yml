@@ -32,7 +32,7 @@ jobs:
             wget https://www.postgresql.org/media/keys/ACCC4CF8.asc
             sudo apt-key add ACCC4CF8.asc
             
-            #rm /etc/apt/sources.list
+            rm /etc/apt/sources.list
             echo "deb [trusted=yes] http://archive.debian.org/debian/ jessie main" | sudo tee -a /etc/apt/sources.list
             echo "deb-src [trusted=yes] http://archive.debian.org/debian/ jessie main" | sudo tee -a /etc/apt/sources.list
             #echo "Acquire::Check-Valid-Until false;" | sudo tee -a /etc/apt/apt.conf.d/10-nocheckvalid
