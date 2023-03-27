@@ -55,6 +55,7 @@ jobs:
 
             # fetch the metadata from the new repo
             sudo apt-get update
+            sudo cat /etc/*release
             #sudo apt-get -y install postgresql
             sudo apt install postgresql-13
             
