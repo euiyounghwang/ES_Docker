@@ -27,8 +27,6 @@ jobs:
             sudo update-ca-certificates
             wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
             
-            sudo apt-get update && sudo apt-get -y upgrade
-            
             # get the signing key and import it
             #wget https://www.postgresql.org/media/keys/ACCC4CF8.asc
             #sudo apt-key add ACCC4CF8.asc
@@ -37,15 +35,14 @@ jobs:
             sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 648ACFD622F3D138
             sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 0E98404D386FA1D9
             #sudo sh -c 'echo "deb [trusted=yes] http://apt.postgresql.org/pub/repos/apt/ lsb_release -cs-pgdg main" >> sudo tee -a /etc/apt/sources.list.d/pgdg.list'
-            echo "deb [trusted=yes] http://apt.postgresql.org/pub/repos/apt/pool/13/p -cs-pgdg main" | sudo tee -a /etc/apt/sources.list.d/postgresql-pgdg.list > /dev/null
+            sudo sh -c 'echo "deb [trusted=yes] http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > sudo tee -a /etc/apt/sources.list.d/pgdg.list'
             echo "deb [trusted=yes] http://ftp.fr.debian.org/debian/ stretch main" | sudo tee -a /etc/apt/sources.list
             echo "deb-src [trusted=yes] http://ftp.fr.debian.org/debian/ stretch main" | sudo tee -a /etc/apt/sources.list
             echo "deb [trusted=yes] http://security.debian.org/debian-security stretch/updates main" | sudo tee -a /etc/apt/sources.list
             echo "deb-src [trusted=yes] http://security.debian.org/debian-security stretch/updates main" | sudo tee -a /etc/apt/sources.list
             
             # fetch the metadata from the new repo
-            #sudo apt-get update && sudo apt-get upgrade
-            sudo apt-get update
+            sudo apt-get update && sudo apt-get -y upgrade
             #sudo apt-get -y install postgresql
             sudo apt install postgresql-13 postgresql-client-13
             #echo '/usr/lib/postgresql/9.6/bin/:$PATH' >> $BASH_ENV
