@@ -21,6 +21,7 @@ jobs:
           command: |
             sudo apt-get install apt-transport-https software-properties-common lsb-release ca-certificates
             sudo rm /etc/apt/sources.list
+            sudo sh -c 'echo "deb [trusted=yes] http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > sudo tee -a /etc/apt/sources.list.d/pgdg.list'
             # Disable expired Let'sEncrypt DST Root CA X3 certificate
             # https://unix.stackexchange.com/questions/671851/how-to-deal-with-www-postgres-org-certificate-expired
             sudo sed -i 's/mozilla\/DST_Root_CA_X3.crt/!mozilla\/DST_Root_CA_X3.crt/g' /etc/ca-certificates.conf
@@ -35,7 +36,6 @@ jobs:
             sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 648ACFD622F3D138
             sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 0E98404D386FA1D9
             #sudo sh -c 'echo "deb [trusted=yes] http://apt.postgresql.org/pub/repos/apt/ lsb_release -cs-pgdg main" >> sudo tee -a /etc/apt/sources.list.d/pgdg.list'
-            sudo sh -c 'echo "deb [trusted=yes] http://apt.postgresql.org/pub/repos/apt $(lsb_release 20.04-pgdg main" > sudo tee -a /etc/apt/sources.list.d/pgdg.list'
             echo "deb [trusted=yes] http://ftp.fr.debian.org/debian/ stretch main" | sudo tee -a /etc/apt/sources.list
             echo "deb-src [trusted=yes] http://ftp.fr.debian.org/debian/ stretch main" | sudo tee -a /etc/apt/sources.list
             echo "deb [trusted=yes] http://security.debian.org/debian-security stretch/updates main" | sudo tee -a /etc/apt/sources.list
