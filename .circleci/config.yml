@@ -37,7 +37,7 @@ jobs:
             sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 648ACFD622F3D138
             sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 0E98404D386FA1D9
             #sudo sh -c 'echo "deb [trusted=yes] http://apt.postgresql.org/pub/repos/apt/ lsb_release -cs-pgdg main" >> sudo tee -a /etc/apt/sources.list.d/pgdg.list'
-            echo "deb [trusted=yes] http://apt.postgresql.org/pub/repos/apt/ 13 -cs-pgdg main" | sudo tee -a /etc/apt/sources.list.d/postgresql-pgdg.list > /dev/null
+            echo "deb [trusted=yes] http://apt.postgresql.org/pub/repos/apt/pool/13/p -cs-pgdg main" | sudo tee -a /etc/apt/sources.list.d/postgresql-pgdg.list > /dev/null
             echo "deb [trusted=yes] http://ftp.fr.debian.org/debian/ stretch main" | sudo tee -a /etc/apt/sources.list
             echo "deb-src [trusted=yes] http://ftp.fr.debian.org/debian/ stretch main" | sudo tee -a /etc/apt/sources.list
             echo "deb [trusted=yes] http://security.debian.org/debian-security stretch/updates main" | sudo tee -a /etc/apt/sources.list
