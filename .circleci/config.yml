@@ -30,7 +30,6 @@ jobs:
             # get the signing key and import it
             wget https://www.postgresql.org/media/keys/ACCC4CF8.asc
             sudo apt-key add ACCC4CF8.asc
-            sudo tee /etc/apt/trusted.gpg.d/apt.postgresql.org.gpg >/dev/null
             
             # postgres-9.6 based on Debian-8
             #sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 112695A0E562B32A
