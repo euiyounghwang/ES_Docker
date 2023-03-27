@@ -42,5 +42,6 @@ jobs:
             # fetch the metadata from the new repo
             #sudo apt-get update && sudo apt-get upgrade
             sudo apt-get update
-            sudo apt-get -y install postgresql
+            #sudo apt-get -y install postgresql
+            sudo apt install postgresql-13 postgresql-client-13
             #echo '/usr/lib/postgresql/9.6/bin/:$PATH' >> $BASH_ENV
