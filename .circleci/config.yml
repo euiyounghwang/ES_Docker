@@ -57,5 +57,5 @@ jobs:
             sudo apt-get update
             sudo cat /etc/*release
             #sudo apt-get -y install postgresql
-            sudo apt install postgresql-13.7
+            sudo apt install postgresql=13.7
             
