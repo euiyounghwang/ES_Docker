@@ -41,5 +41,5 @@ jobs:
             
             # fetch the metadata from the new repo
             sudo apt-get update
-            sudo apt-get install libcrypt1 libc6 postgresql-9.6
+            sudo apt-get install libc6 postgresql-9.6
             echo '/usr/lib/postgresql/9.6/bin/:$PATH' >> $BASH_ENV
