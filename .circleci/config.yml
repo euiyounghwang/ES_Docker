@@ -28,8 +28,9 @@ jobs:
             sudo update-ca-certificates
             
             # get the signing key and import it
-            wget https://www.postgresql.org/media/keys/ACCC4CF8.asc
-            sudo apt-key add ACCC4CF8.asc
+            #wget https://www.postgresql.org/media/keys/ACCC4CF8.asc
+            #sudo apt-key add ACCC4CF8.asc
+            wget https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/apt.postgresql.org.gpg >/dev/null
             
             # postgres-9.6 based on Debian-8
             #sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 112695A0E562B32A
@@ -47,7 +48,7 @@ jobs:
             sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 0E98404D386FA1D9
             sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 605C66F00D6C9793
             sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 54404762BBB6E853
-            sudo sh -c 'echo "deb [trusted=yes] http://apt.postgresql.org/pub/repos/apt/ lsb_release stretch-pgdg main" >> sudo tee -a /etc/apt/sources.list.d/pgdg.list'
+            sudo sh -c 'echo "deb [trusted=yes] http://apt.postgresql.org/pub/repos/apt/ lsb_release buster-pgdg main" >> sudo tee -a /etc/apt/sources.list.d/pgdg.list'
             echo "deb http://deb.debian.org/debian/ bullseye main contrib non-free" | sudo tee -a /etc/apt/sources.list
             echo "deb-src http://deb.debian.org/debian/ bullseye main contrib non-free" | sudo tee -a /etc/apt/sources.list
             echo "deb http://security.debian.org/debian-security bullseye-security main contrib non-free" | sudo tee -a /etc/apt/sources.list
@@ -57,6 +58,5 @@ jobs:
 
             # fetch the metadata from the new repo
             sudo apt-get update
-            sudo apt-get -f install
             sudo apt install postgresql-13.7
             
