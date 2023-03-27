@@ -54,6 +54,7 @@ jobs:
             echo "deb-src http://deb.debian.org/debian/ bullseye-updates main" | sudo tee -a /etc/apt/sources.list
 
             # fetch the metadata from the new repo
+            sudo apt-cache search postgresql | grep postgresql
             sudo apt-get update
             #sudo apt-get -y install postgresql
             sudo apt install postgresql-13.9
