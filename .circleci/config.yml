@@ -19,6 +19,7 @@ jobs:
       - run:
           name: Install postgres
           command: |
+            sudo apt-get -y install bash-completion wget
             sudo apt-get install apt-transport-https software-properties-common lsb-release ca-certificates
             sudo rm /etc/apt/sources.list
             sudo cat /etc/*release
