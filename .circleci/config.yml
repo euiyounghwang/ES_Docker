@@ -52,5 +52,5 @@ jobs:
             #sudo apt-get update && sudo apt-get -y upgrade
             sudo apt-get update
             #sudo apt-get -y install postgresql
-            sudo apt install -y postgresql-13
+            sudo apt install postgresql-13
             #echo '/usr/lib/postgresql/9.6/bin/:$PATH' >> $BASH_ENV
