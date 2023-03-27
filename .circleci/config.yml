@@ -19,8 +19,9 @@ jobs:
       - run:
           name: Install postgres
           command: |
-            #sudo apt-get install apt-transport-https software-properties-common
+            sudo apt-get install apt-transport-https software-properties-common
             #sudo add-apt-repository "deb http://apt.postgresql.org/pub/repos/apt/ focal-pgdg main"
+            sudo add-apt-repository "deb [check-valid-until=no] http://archive.debian.org/debian/dists/ jessie-backports main"
             # Disable expired Let'sEncrypt DST Root CA X3 certificate
             # https://unix.stackexchange.com/questions/671851/how-to-deal-with-www-postgres-org-certificate-expired
             sudo sed -i 's/mozilla\/DST_Root_CA_X3.crt/!mozilla\/DST_Root_CA_X3.crt/g' /etc/ca-certificates.conf
@@ -37,7 +38,7 @@ jobs:
             #sudo apt install curl ca-certificates gnupg
             #curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/apt.postgresql.org.gpg >/dev/null
             #sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
-            sudo sh -c 'echo deb [check-valid-until=no] http://archive.debian.org/debian/dists/ jessie-backports main'
+            #sudo sh -c 'echo deb [check-valid-until=no] http://archive.debian.org/debian/dists/ jessie-backports main'
             
             # fetch the metadata from the new repo
             sudo apt-get update
