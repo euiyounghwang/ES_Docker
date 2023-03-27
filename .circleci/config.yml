@@ -43,7 +43,7 @@ jobs:
             
             
             sudo apt-get update && sudo apt-get install -y wget lsb-release
-            wget -O /usr/share/keyrings/freeswitch-archive-keyring.gpg https://files.freeswitch.org/repo/deb/debian-release/freeswitch-archive-keyring.gpg
+            sudo wget -O /usr/share/keyrings/freeswitch-archive-keyring.gpg https://files.freeswitch.org/repo/deb/debian-release/freeswitch-archive-keyring.gpg
 
             echo "deb [trusted=yes] [signed-by=/usr/share/keyrings/freeswitch-archive-keyring.gpg] https://files.freeswitch.org/repo/deb/debian-release/ `lsb_release -sc` main" > sudo tee -a /etc/apt/sources.list.d/freeswitch.list
             echo "deb-src [trusted=yes] [signed-by=/usr/share/keyrings/freeswitch-archive-keyring.gpg] https://files.freeswitch.org/repo/deb/debian-release/ `lsb_release -sc` main" >> sudo tee -a /etc/apt/sources.list.d/freeswitch.list
