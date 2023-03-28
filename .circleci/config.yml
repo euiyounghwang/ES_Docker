@@ -22,16 +22,11 @@ jobs:
             sudo apt-get -y install bash-completion wget ca-certificates
             sudo apt-get install apt-transport-https software-properties-common lsb-release ca-certificates
             sudo rm /etc/apt/sources.list
-            sudo cat /etc/*release
             # Disable expired Let'sEncrypt DST Root CA X3 certificate
             # https://unix.stackexchange.com/questions/671851/how-to-deal-with-www-postgres-org-certificate-expired
             sudo sed -i 's/mozilla\/DST_Root_CA_X3.crt/!mozilla\/DST_Root_CA_X3.crt/g' /etc/ca-certificates.conf
             sudo update-ca-certificates
             wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-            
-            # get the signing key and import it
-            #wget https://www.postgresql.org/media/keys/ACCC4CF8.asc
-            #sudo apt-key add ACCC4CF8.asc
             
             # postgres-9.6 based on Debian-8
             #sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 112695A0E562B32A
@@ -50,8 +45,8 @@ jobs:
             sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 605C66F00D6C9793
             sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 54404762BBB6E853
             sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > sudo tee -a /etc/apt/sources.list.d/pgdg.list'
-            echo "deb http://deb.debian.org/debian/ bullseye main" | sudo tee -a /etc/apt/sources.list
-            echo "deb-src http://deb.debian.org/debian/ bullseye main" | sudo tee -a /etc/apt/sources.list
+            echo "deb http://deb.debian.org/debian/ bullseye-security main" | sudo tee -a /etc/apt/sources.list
+            echo "deb-src http://deb.debian.org/debian/ bullseye-security main" | sudo tee -a /etc/apt/sources.list
             
             # fetch the metadata from the new repo
             sudo apt-get update
