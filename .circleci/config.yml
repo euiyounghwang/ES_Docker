@@ -40,13 +40,13 @@ jobs:
                         
             # postgres-13
             sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 112695A0E562B32A
-            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 648ACFD622F3D138
-            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 0E98404D386FA1D9
-            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 605C66F00D6C9793
+            #sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 648ACFD622F3D138
+            #sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 0E98404D386FA1D9
+            #sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 605C66F00D6C9793
             sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 54404762BBB6E853
             sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > sudo tee -a /etc/apt/sources.list.d/pgdg.list'
-            echo "deb http://deb.debian.org/debian/ bullseye-security main contrib" | sudo tee -a /etc/apt/sources.list
-            echo "deb-src http://deb.debian.org/debian/ bullseye-security main contrib" | sudo tee -a /etc/apt/sources.list
+            echo "deb http://deb.debian.org/debian/ bullseye main" | sudo tee -a /etc/apt/sources.list
+            echo "deb-src http://deb.debian.org/debian/ bullseye main" | sudo tee -a /etc/apt/sources.list
             
             # fetch the metadata from the new repo
             sudo apt-get update
