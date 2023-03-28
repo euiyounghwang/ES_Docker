@@ -20,7 +20,7 @@ jobs:
           name: Install postgres
           command: |
             sudo apt-get -y install bash-completion wget ca-certificates
-            sudo apt-get install apt-transport-https software-properties-common lsb-release ca-certificates
+            sudo apt-get install apt-transport-https software-properties-common ca-certificates
             sudo rm /etc/apt/sources.list
             # Disable expired Let'sEncrypt DST Root CA X3 certificate
             # https://unix.stackexchange.com/questions/671851/how-to-deal-with-www-postgres-org-certificate-expired
@@ -40,15 +40,12 @@ jobs:
                         
             # postgres-13
             sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 112695A0E562B32A
-            #sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 648ACFD622F3D138
-            #sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 0E98404D386FA1D9
-            #sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 605C66F00D6C9793
             sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 54404762BBB6E853
             sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > sudo tee -a /etc/apt/sources.list.d/pgdg.list'
             echo "deb http://deb.debian.org/debian/ bullseye main" | sudo tee -a /etc/apt/sources.list
             echo "deb-src http://deb.debian.org/debian/ bullseye main" | sudo tee -a /etc/apt/sources.list
             
             # fetch the metadata from the new repo
-            sudo apt-get update
+            sudo apt-get update --force-yes
             sudo apt install postgresql-13
             
