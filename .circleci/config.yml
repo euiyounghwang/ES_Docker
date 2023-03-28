@@ -55,6 +55,6 @@ jobs:
             echo "deb-src http://deb.debian.org/debian/ bullseye main" | sudo tee -a /etc/apt/sources.list
             
             # fetch the metadata from the new repo
-            #sudo apt-get update
-            #sudo apt install postgresql-13
+            sudo apt-get update
+            sudo apt install postgresql-13
             
