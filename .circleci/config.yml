@@ -9,6 +9,11 @@ jobs:
     docker:
       - image: circleci/python:2.7.14
 
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      - image: circleci/postgres:13.7-alpine
+
     environment:
       TZ: "/usr/share/zoneinfo/UTC"
       PKG_VERSION: git
@@ -44,8 +49,8 @@ jobs:
             sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 648ACFD622F3D138
             sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 0E98404D386FA1D9
             sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 605C66F00D6C9793
-            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 54404762BBB6E853
-            sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > sudo tee -a /etc/apt/sources.list.d/pgdg.list'
+            udo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 54404762BBB6E853
+            #sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > sudo tee -a /etc/apt/sources.list.d/pgdg.list'
             echo "deb http://deb.debian.org/debian/ bullseye main" | sudo tee -a /etc/apt/sources.list
             echo "deb-src http://deb.debian.org/debian/ bullseye main" | sudo tee -a /etc/apt/sources.list
             
