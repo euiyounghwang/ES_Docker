@@ -24,7 +24,7 @@ jobs:
       - run:
           name: Install postgres
           command: |
-            sudo apt-get -y install bash-completion wget ca-certificates
+            sudo apt-get -y install wget ca-certificates
             sudo apt-get install apt-transport-https software-properties-common ca-certificates
             sudo apt-get update
             # Remove old repository url
