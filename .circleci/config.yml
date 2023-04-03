@@ -26,7 +26,7 @@ jobs:
           command: |
             sudo apt-get -y install bash-completion wget ca-certificates
             sudo apt-get install apt-transport-https software-properties-common ca-certificates
-            ## Remove old repository url
+            # Remove old repository url
             sudo rm /etc/apt/sources.list
             # Disable expired Let'sEncrypt DST Root CA X3 certificate
             # https://unix.stackexchange.com/questions/671851/how-to-deal-with-www-postgres-org-certificate-expired
