@@ -25,7 +25,7 @@ jobs:
           name: Install postgres
           command: |
             sudo apt-get -y install wget ca-certificates
-            sudo apt-get install apt-transport-https software-properties-common ca-certificates
+            #sudo apt-get install apt-transport-https software-properties-common ca-certificates
             # Remove old repository url
             sudo rm /etc/apt/sources.list
             # Disable expired Let'sEncrypt DST Root CA X3 certificate
