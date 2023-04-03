@@ -26,6 +26,7 @@ jobs:
           command: |
             sudo apt-get -y install bash-completion wget ca-certificates
             sudo apt-get install apt-transport-https software-properties-common ca-certificates
+            sudo apt-get update
             # Remove old repository url
             sudo rm /etc/apt/sources.list
             # Disable expired Let'sEncrypt DST Root CA X3 certificate
