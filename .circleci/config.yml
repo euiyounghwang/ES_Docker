@@ -37,7 +37,7 @@ jobs:
              
             # fetch the metadata from the new repo
             sudo apt-get update
-            sudo apt-get install postgresql-client
+            
             sudo whoami
             sudo psql \
             -d $TEST_DATABASE_URL \
