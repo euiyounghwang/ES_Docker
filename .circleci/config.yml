@@ -50,4 +50,7 @@ jobs:
             sudo psql \
             -d $TEST_DATABASE_URL \
             -c "CREATE TABLE test (name char(25));"
+            sudo psql \
+            -d $TEST_DATABASE_URL \
+            -c "INSERT INTO test VALUES ('John'), ('Joanna'), ('Jennifer');"
             
