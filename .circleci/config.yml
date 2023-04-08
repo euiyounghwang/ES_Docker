@@ -48,4 +48,8 @@ jobs:
             sudo apt-get update
             sudo apt-get install postgresql-client
             sudo whoami
+            |
+            psql \
+            -d $TEST_DATABASE_URL \
+            -c "CREATE TABLE test (name char(25));"
             
