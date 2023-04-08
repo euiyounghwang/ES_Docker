@@ -12,7 +12,7 @@ jobs:
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
-      - image: cimg/postgres:13.7
+      - image: cimg/postgres:13.10
         environment:
           PGHOST: localhost
           PGUSER: circleci
@@ -41,4 +41,6 @@ jobs:
             
             # fetch the metadata from the new repo
             sudo apt-get update
+            sudo apt-get install postgresql-client
+            sudo whoami
             
