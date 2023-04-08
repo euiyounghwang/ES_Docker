@@ -34,10 +34,12 @@ jobs:
             sudo rm /etc/apt/sources.list
             
             # postgres-13
-             
+            echo "deb http://deb.debian.org/debian/ bullseye main" | sudo tee -a /etc/apt/sources.list
+            echo "deb-src http://deb.debian.org/debian/ bullseye main" | sudo tee -a /etc/apt/sources.list
+            
             # fetch the metadata from the new repo
             sudo apt-get update
-            
+            sudo apt-get install postgresql-client
             sudo whoami
             sudo psql \
             -d $TEST_DATABASE_URL \
