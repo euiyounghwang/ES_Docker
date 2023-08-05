@@ -15,4 +15,6 @@ less ~/airflow/airflow.cfg
 # subfolder in a code repository. This path must be absolute.
 #dags_folder = /Users/euiyoung.hwang/airflow/dags
 #dags_folder = /Users/euiyoung.hwang/ES/Python_Workspace/ES_Docker/Airflow/dags
+
+airflow tasks test hello_world hello_task
 # *******
