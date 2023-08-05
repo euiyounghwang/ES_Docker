@@ -11,6 +11,11 @@ airflow db init
 airflow webserver -p 8889
 #(admin/admin)
 
+#sample_task = BashOperator(
+#    task_id="sample_task",
+#    bash_command='python3 sample_task.py',
+#    dag=dag)
+
 less ~/airflow/airflow.cfg
 # subfolder in a code repository. This path must be absolute.
 #dags_folder = /Users/euiyoung.hwang/airflow/dags
