@@ -38,4 +38,5 @@ airflow tasks test hello_world hello_task
 # markupsafe error
 pip install markupsafe==2.0.1
 # Update the airflow.cfg file. Search for the variable dagbag_import_timeout and update it's value type to integer instead of float, from dagbag_import_timeout = 30.0 to dagbag_import_timeout = 30. This should work fine.
+pip install kubernetes
 # *******
