@@ -3,11 +3,19 @@
 # airflow
 # https://velog.io/@jenori_dev/airflow-%EB%A7%A5-%ED%84%B0%EB%AF%B8%EB%84%90%EC%97%90%EC%84%9C-%EC%97%90%EC%96%B4%ED%94%8C%EB%A1%9C%EC%9A%B0-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0
 # https://arpitrana.medium.com/install-airflow-on-macos-guide-fc66399b2a9e
+#https://m.blog.naver.com/wideeyed/221565276777
+
 conda create -n [가상환경이름]_env python=3.7
 source activate [가상환경이름]_env
 pip3 install apache-airflow
 airflow users create -u admin -p admin -f euiyoung -l hwang -r Admin -e admin@admin.com
 airflow db init
+
+# cd $AIRFLOW_HOME/dags/ && python my_python_op.py
+
+# 스케쥴러를 컨트롤하고 관리할 웹서버를 실행합니다(포트는 변경가능하며 실습에서는 8882 포트 사용)
+# airflow scheduler &
+
 #/Users/euiyoung.hwang/airflow (cd ~/airflow)
 airflow webserver -p 8889
 #(admin/admin)
