@@ -1,26 +1,55 @@
-# Use the latest 2.1 version of CircleCI pipeline process engine.
-# See: https://circleci.com/docs/2.0/configuration-reference
-version: 2.1
+# Python CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-python/ for more details
 
-# Define a job to be invoked later in a workflow.
-# See: https://circleci.com/docs/2.0/configuration-reference/#jobs
+version: 2 # use CircleCI 2.0
 jobs:
-  say-hello:
-    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
-    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
+  build:
+    working_directory: ~/FN-Inbox
     docker:
-      - image: cimg/base:stable
-    # Add steps to the job
-    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
+      - image: circleci/python:2.7.14
+        environment:
+          TEST_DATABASE_URL: postgresql://postgres@localhost/circle_test
+
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      - image: cimg/postgres:13.10
+        environment:
+          PGHOST: localhost
+          POSTGRES_USER: postgres
+
+    environment:
+      TZ: "/usr/share/zoneinfo/UTC"
+      PKG_VERSION: git
+
     steps:
       - checkout
-      - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
 
-# Invoke jobs via workflows
-# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
-workflows:
-  say-hello-workflow:
-    jobs:
-      - say-hello
+      - run:
+          name: Install postgres
+          command: |
+            #sudo apt-get -y install wget ca-certificates
+            # Remove old repository url
+            sudo rm /etc/apt/sources.list
+            
+            # postgres-13
+            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 112695A0E562B32A
+            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 648ACFD622F3D138
+            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 0E98404D386FA1D9
+            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 605C66F00D6C9793
+            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 54404762BBB6E853
+            echo "deb http://deb.debian.org/debian/ bullseye main" | sudo tee -a /etc/apt/sources.list
+            echo "deb-src http://deb.debian.org/debian/ bullseye main" | sudo tee -a /etc/apt/sources.list
+            
+            # fetch the metadata from the new repo
+            sudo apt-get update
+            sudo apt-get install postgresql-client
+            sudo whoami
+            sudo psql \
+            -d $TEST_DATABASE_URL \
+            -c "CREATE TABLE test (name char(25));"
+            sudo psql \
+            -d $TEST_DATABASE_URL \
+            -c "INSERT INTO test VALUES ('John'), ('Joanna'), ('Jennifer');"
+            
